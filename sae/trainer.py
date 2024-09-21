@@ -19,6 +19,7 @@ from .data import MemmapDataset
 from .sae import Sae
 from .utils import geometric_median, get_layer_list, resolve_widths
 
+torch.set_default_dtype(torch.float16)
 
 class SaeTrainer:
     def __init__(
@@ -66,7 +67,7 @@ class SaeTrainer:
 
         self.model = model
         self.saes = {
-            hook: Sae(input_widths[hook], cfg.sae, device, dtype=torch.float8)
+            hook: Sae(input_widths[hook], cfg.sae, device, dtype=torch.float16)
             for hook in self.local_hookpoints()
         }
 
