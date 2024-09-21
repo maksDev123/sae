@@ -13,6 +13,7 @@ from torch import Tensor, nn
 from .config import SaeConfig
 from .utils import decoder_impl
 
+torch.set_default_dtype(torch.float16)
 
 class EncoderOutput(NamedTuple):
     top_acts: Tensor
