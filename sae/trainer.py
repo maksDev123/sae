@@ -66,7 +66,7 @@ class SaeTrainer:
 
         self.model = model
         self.saes = {
-            hook: Sae(input_widths[hook], cfg.sae, device)
+            hook: Sae(input_widths[hook], cfg.sae, device, dtype=torch.float8)
             for hook in self.local_hookpoints()
         }
 
